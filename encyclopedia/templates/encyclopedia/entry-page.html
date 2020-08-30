@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia - Entry Page
+{% endblock %}
+
+{% block body %}
+    <!-- Print HTML if available -->
+    {% if data %}
+        <p>{{ data|safe }}</p>
+
+        <!-- To edit current page -->
+        <form action="{% url 'wiki:edit' entry_title %}">
+            <button class="btn btn-primary">Edit</button>
+        </form>
+    <!-- Else print not found error -->
+    {% else %}
+        <h1>Requested page was not found</h1>
+    {% endif %}
+{% endblock %}
